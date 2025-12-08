@@ -1,9 +1,13 @@
 By Tanvi Vidyala and Nithya Nair
+
 ## Introduction
+To be Added
 
 ## Data Cleaning and Exploratory Data Analysis
+To be Added
 
 ## Assessment of Missingness
+To be Added
 
 ## Framing a Prediction Problem 🍲
 **Prediction Problem**: How can we use the nutritional facts and ingredient lists to classify whether a recipe would be tagged as European or American? 
