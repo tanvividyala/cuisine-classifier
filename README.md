@@ -31,6 +31,7 @@ Our model returned a F-1 Score of **0.77** for the American class and an F-1 Sco
 Firstly, we wanted to assess which combination of our initial 7 quantitative features would result in an optimal accuracy rate. To assess this, we tested all 26 possible combinations of our features to understand which variables held the strongest signal for distinguishing American and European recipes.
 
 #### Top 10 Feature Combinations
+
 | Rank | Feature Combination                          | Accuracy     |
 | ---- | -------------------------------------------- | ------------ |
 | 1    | sugar, sodium, protein, saturated_fat, carbs | **0.763701** |
