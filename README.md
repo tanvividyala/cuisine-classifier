@@ -69,7 +69,7 @@ In the end, the performance of the final model on the training data achieved a F
 
 <iframe
   src="assets/confusion-matrix.html"
-  width="800"
+  width="1200"
   height="600"
   frameborder="0"
 ></iframe>
