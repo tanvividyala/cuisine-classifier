@@ -78,12 +78,13 @@ In the end, the performance of the final model on the training data achieved a F
 ## Fairness Analysis
 To assess the fairness of our final model, we decided to evaluate whether the recall score is significantly different across both cuisine groups, American and European. 
 
-- Group X: Recipes classified as American
-- Group Y: Recipes classified as European
-- Evaluation Metric: Recall
-- Null: Our model is fair. There is no significant difference in recall for the American and European cuisine classes, and any differences are due to random chance.
-- Alternative: Our model is unfair. There is a significant difference in recall for the American and European cuisine classes.
-- Test Statistic: Calculated Difference in Recall
-- Significance Level: α = 0.05
-- P-Value: 1.0
-Since our p-value was
+- **Group X**: Recipes classified as American
+- **Group Y**: Recipes classified as European
+- **Evaluation Metric**: Recall
+- **Null**: Our model is fair. There is no significant difference in recall for the American and European cuisine classes, and any differences are due to random chance.
+- **Alternative**: Our model is unfair. There is a significant difference in recall for the American and European cuisine classes.
+- **Test Statistic**: Calculated Difference in Recall (~0.0256)
+- **Significance Level**: α = 0.05
+- **P-Value**: 1.0
+
+Since our p-value of 1.0 is greater than the significance level of 0.05, we fail to reject the null hypothesis, and we did not find evidence to support that our model treats American and European recipes differently.
