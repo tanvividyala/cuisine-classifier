@@ -90,7 +90,7 @@ Since our p-value of 1.0 is greater than the significance level of 0.05, we fail
 
 <iframe
   src="assets/fairness-analysis.html"
-  width="800"
+  width="1200"
   height="600"
   frameborder="0"
 ></iframe>
