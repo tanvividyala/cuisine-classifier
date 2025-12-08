@@ -66,6 +66,13 @@ Lastly, we engineered two new features `PROTEIN_DENSITY` and `FAT_PROTEIN_RATIO`
 
 In the end, the performance of the final model on the training data achieved a F-1 score of **0.78** for the American class and an F-1 Score of **0.77** for the European class on the test data. This was a slight improvement from the baseline which was 0.77 for the American class and 0.76 for the European class. The overall model accuracy improved as well increasing from 0.762 with the baseline model to **0.773**.
 
+<iframe
+  src="assets/confusion-matrix.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
+
 ## Fairness Analysis
 To assess the fairness of our final model, we decided to evaluate whether the recall score is significantly different across both cuisine groups, American and European. 
 
@@ -79,3 +86,10 @@ To assess the fairness of our final model, we decided to evaluate whether the re
 - **P-Value**: 1.0
 
 Since our p-value of 1.0 is greater than the significance level of 0.05, we fail to reject the null hypothesis, and we did not find evidence to support that our model treats American and European recipes differently.
+
+<iframe
+  src="assets/fairness-analysis.html"
+  width="800"
+  height="600"
+  frameborder="0"
+></iframe>
