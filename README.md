@@ -1,4 +1,3 @@
-# Cuisine Classifier 🍽️
 By Tanvi Vidyala and Nithya Nair
 
 ## Framing a Prediction Problem 🍲
