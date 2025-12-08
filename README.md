@@ -103,3 +103,7 @@ Since our p-value of 1.0 is greater than the significance level of 0.05, we fail
   height="600"
   frameborder="0"
 ></iframe>
+
+## Contributors
+Tanvi Vidyala: tvidyala@ucsd.edu
+Nithya Nair: n5nair@ucsd.edu
