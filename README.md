@@ -1,4 +1,4 @@
-Cuisine Classifier 🍽️ <br>
+## Cuisine Classifier 🍽️ <br>
 By Tanvi Vidyala and Nithya Nair
 
 ## Introduction
