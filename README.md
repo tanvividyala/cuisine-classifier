@@ -1,23 +1,23 @@
-## Cuisine Classifier 🍽️ <br>
+# Cuisine Classifier 🍽️ <br>
 By Tanvi Vidyala and Nithya Nair
 
-### Introduction
+## Introduction
 To be Added
 
-### Data Cleaning and Exploratory Data Analysis
+## Data Cleaning and Exploratory Data Analysis
 To be Added
 
-### Assessment of Missingness
+## Assessment of Missingness
 To be Added
 
-### Framing a Prediction Problem 🍲
+## Framing a Prediction Problem 🍲
 **Prediction Problem**: How can we use the nutritional facts and ingredient lists to classify whether a recipe would be tagged as European or American? 
 
 At the time of prediction, the nutrition information (calories, total fat, sodium, protein, saturated fat, and carbohydrates) as well as the list of ingredients in each recipe wil be known.
 
 This problem will be **binary classification** since there are two possible classes we are predicting (American or European). Our prediction will be the `LABEL` column. We'll be evaluating our model's success using **both accuracy** and **F1-score**. Accuracy is appropriate because our classes are nearly balanced, while F1-score adds to it by accounting for precision and recall, giving a more nuanced view of model performance across both cuisine categories.
 
-### Baseline Model 🥗
+## Baseline Model 🥗
 We used a **Random Forest Classifier** for this problem because it can handle different data types well and is robust to noise while capturing nonlinear patterns in the dataset. <br> 
 
 Our baseline model used all 7 **quantitative** nutritional variables as predictors:
@@ -36,10 +36,10 @@ The `INGREDIENTS` column was turned into a quantitative variable using the built
 
 Our model returned a F-1 Score of **0.77** for the American class and an F-1 Score of **0.76** for the European class. The model accuracy was similar at **0.7602**. This indicated somewhat strong, balanced performance across both our categories. Since both two classes are nearly evenly distributed, and that the model performs consistently across them, we believe the model is “good” for a baseline.
 
-### Final Model 🍕
+## Final Model 🍕
 Firstly, we wanted to assess which combination of our initial 7 quantitative features would result in an optimal accuracy rate. To assess this, we tested all 26 possible combinations of our features to understand which variables held the strongest signal for distinguishing American and European recipes.
 
-#### Top 10 Feature Combinations
+### Top 10 Feature Combinations
 
 | Rank | Feature Combination                          | Accuracy     |
 | ---- | -------------------------------------------- | ------------ |
@@ -83,7 +83,7 @@ In the end, the performance of the final model on the training data achieved a F
   frameborder="0"
 ></iframe>
 
-### Fairness Analysis 🍪
+## Fairness Analysis 🍪
 To assess the fairness of our final model, we decided to evaluate whether the recall score is significantly different across both cuisine groups, American and European. 
 
 - **Group X**: Recipes classified as American
