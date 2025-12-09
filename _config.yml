@@ -1,4 +1,1 @@
-plugins:
-  - jekyll-remote-theme
-
-remote_theme: zivhub/monophase@main
+remote_theme: pages-themes/merlot@v0.2.0
