@@ -72,7 +72,7 @@ Lastly, we engineered two new features `PROTEIN_DENSITY` and `FAT_PROTEIN_RATIO`
 
 `PROTEIN_DENSITY` highlights how much protein a recipe provides relative to its calories, capturing differences in macronutrient balance between cuisines that raw protein alone cannot.
 
-`FAT_PROTEIN_RATIO` measures saturated fat relative to protein, reflecting contrasts in cooking styles—such as dairy-based fats in European dishes versus protein-heavy American recipes—and reveals patterns not visible in either nutrient alone.
+`FAT_PROTEIN_RATIO` measures saturated fat relative to protein, reflecting contrasts in cooking styles (such as dairy-based fats in European dishes versus protein-heavy American recipes) and reveals patterns not visible in either nutrient alone.
 
 In the end, the performance of the final model on the training data achieved a F-1 score of **0.78** for the American class and an F-1 Score of **0.77** for the European class on the test data. This was a slight improvement from the baseline which was 0.77 for the American class and 0.76 for the European class. The overall model accuracy improved as well increasing from 0.762 with the baseline model to **0.773**.
 
