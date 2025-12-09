@@ -30,7 +30,7 @@ Our baseline model used all 7 **quantitative** nutritional variables as predicto
 - `CARBS`<br>
 
 As well as one **nominal** text feature containing lists of ingredients for each recipe:<br>
-`INGREDIENTS`
+- `INGREDIENTS`
 
 The `INGREDIENTS` column was turned into a quantitative variable using the built-in `TfidfVectorizer`. We also encoded the `LABELS` target column using `LabelEncoder` to turn categorical labels (American and European) into integers. 
 
