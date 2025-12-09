@@ -21,13 +21,13 @@ This problem will be **binary classification** since there are two possible clas
 We used a **Random Forest Classifier** for this problem because it can handle different data types well and is robust to noise while capturing nonlinear patterns in the dataset. <br> 
 
 Our baseline model used all 7 **quantitative** nutritional variables as predictors:
-`CALORIES`<br>
-`TOTAL_FAT`<br>
-`SUGAR`<br>
-`SODIUM`<br>
-`PROTEIN`<br>
-`SATURATED_FAT`<br>
-`CARBS`<br>
+- `CALORIES`<br>
+- `TOTAL_FAT`<br>
+- `SUGAR`<br>
+- `SODIUM`<br>
+- `PROTEIN`<br>
+- `SATURATED_FAT`<br>
+- `CARBS`<br>
 
 As well as one **nominal** text feature containing lists of ingredients for each recipe:<br>
 `INGREDIENTS`
