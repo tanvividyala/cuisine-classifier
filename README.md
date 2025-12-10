@@ -2,13 +2,127 @@
 By Tanvi Vidyala and Nithya Nair
 
 ## Introduction
-To be Added
+Introduction (Nithya)
+For our project, we wanted to investigate whether European food is actually healthier than American food by comparing the nutritional information in American recipes to that of European recipes. For the purposes of our study, we define a healthier recipe to be one that has a lower amount of sugar, carbs, sodium, saturated fat, calories, or total fat.
+
+The datasets we use contain information from (food.com)[food.com] and were originally scraped for the paper (Generating Personalized Recipes from Historical User Preferences)[https://cseweb.ucsd.edu/~jmcauley/pdfs/emnlp19c.pdf] by Majumder et al. The recipes dataset has 83,782 rows and 12 columns. Each row represents one recipe. The columns contain the following information:
+
+| Column           | Description                                                                                                                                                                       |
+|------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| `name`           | Recipe name                                                                                                                                                                       |
+| `id`             | Recipe ID                                                                                                                                                                         |
+| `minutes`        | Minutes to prepare recipe                                                                                                                                                         |
+| `contributor_id` | User ID who submitted this recipe                                                                                                                                                 |
+| `submitted`      | Date recipe was submitted                                                                                                                                                         |
+| `tags`           | Food.com tags for recipe                                                                                                                                                          |
+| `nutrition`      | Nutrition information in the form `[calories (#), total fat (PDV), sugar (PDV), sodium (PDV), protein (PDV), saturated fat (PDV), carbohydrates (PDV)]`; PDV = percentage of daily value |
+| `n_steps`        | Number of steps in recipe                                                                                                                                                         |
+| `steps`          | Text for recipe steps, in order                                                                                                                                                   |
+| `description`    | User-provided description                                                                                                                                                         |
+
+The interactions dataset contains 731,927 rows and 5 columns. Each row represents one review of a recipe. The columns for this dataset include the following information:
+
+| Column     | Description            |
+|-----------|--------------------------|
+| user_id   | User ID                  |
+| recipe_id | Recipe ID                |
+| date      | Date of interaction      |
+| rating    | Rating given             |
+| review    | Review text              |
 
 ## Data Cleaning and Exploratory Data Analysis
-To be Added
+Before we could begin the data cleaning process, we had to:
+- Merge the recipes and interactions dataset
+- Fill all ratings of 0 with np.nan (ratings of 0 mean that the user likely didn’t rate the recipe; replacing these ratings with np.nan means that the average rating won’t be affected by ratings of 0)
+- Find the average rating per recipe
+- Add the average rating as a Series back to our merged dataset
+
+Once we followed these steps, we could proceed with our cleaning. First, we dropped the duplicate rows in our dataframe, so that there was only one row per recipe. Since we don’t need any of the ratings information for our research question, we could ignore these values and just keep the first instance of each recipe in our dataframe. 
+
+Next, we split the values in the nutrition column into separate columns: calories (#), total fat (PDV), sugar (PDV), sodium (PDV), protein (PDV), saturated fat (PDV), and carbs (PDV). This made it easier to access certain nutritional information for hypothesis testing.
+
+Then, we split the tags column into lists so we could only keep the recipes tagged as American or European. We located these recipes, added a cuisine column marking them as either American or European, and then concatenated these dataframes together.  
+
+Finally, we dropped columns so that we only kept ones relevant to our question, which were name, ingredients, calories (#), total_fat (PDV), sugar (PDV), sodium (PDV), protein (PDV), saturated_fat (PDV), carbs (PDV), and cuisine.
+
+In total, our cleaned dataframe had 17,682 rows and 10 columns. Here are the first 5 rows of our cleaned dataframe:
+
+| idx | name                         | ingredients                                                            | calories (#) | total_fat (PDV) | sugar (PDV) | sodium (PDV) | protein (PDV) | saturated_fat (PDV) | carbs (PDV) | cuisine   |
+|-----|------------------------------|-------------------------------------------------------------------------|--------------|------------------|-------------|--------------|----------------|-----------------------|-------------|-----------|
+| 0   | millionaire pound cake       | ['butter', 'sugar', 'eggs', 'all-purpose flour'…]                      | 878.3        | 63.0             | 326.0       | 13.0         | 20.0           | 123.0                | 39.0        | american  |
+| 1   | rter med flsk pea soup with pork | ['dried yellow peas', 'water', 'salt', 'pork'…]                    | 160.4        | 11.0             | 0.0         | 34.0         | 44.0           | 12.0                 | 0.0         | american  |
+| 2   | go to bbq sauce for ribs     | ['tomato ketchup', 'dark brown sugar', 'apples'…]                      | 233.5        | 0.0              | 209.0       | 52.0         | 2.0            | 0.0                  | 19.0        | american  |
+| 3   | big easy gumbo               | ['vegetable oil', 'all-purpose flour', 'onion'…]                      | 484.1        | 42.0             | 7.0         | 32.0         | 75.0           | 31.0                 | 6.0         | american  |
+| 4   | cheeezzy potatoes            | ['frozen southern style hash brown potatoes', …]                      | 212.9        | 22.0             | 5.0         | 16.0         | 15.0           | 40.0                 | 4.0         | american  |
+
+
+### Univariate Analysis
+We performed an univariate analysis on the number of calories.
+
+The histogram shows a right skewed pattern, with a peak at the 175-222.9 calorie mark. As the calorie amount increases, the percentage of recipes tends to decrease, suggesting that there aren’t as many American and European recipes with more than 1,000, or even 500, calories.
+
+### Bivariate Analysis
+
+For our bivariate analysis, we looked at the amount of sugar in American recipes vs. European recipes.
+
+The IQR of the amount of sugar for American recipes is 53 while the IQR of the amount of sugar for European recipes is 32. This suggests that there is greater variation in the amount of sugar of American recipes compared to European recipes.
+
+### Interesting Aggregates
+For our pivot table, we chose to group by cuisine and analyze the differences in means for our nutritional data.
+
+| cuisine   | calories (#) | carbs (PDV) | protein (PDV) | saturated_fat (PDV) | sodium (PDV) | sugar (PDV) | total_fat (PDV) |
+|-----------|--------------|-------------|----------------|-----------------------|--------------|-------------|------------------|
+| american  | 453.33812    | 13.672177   | 36.218693      | 44.671853            | 34.552026    | 69.154943   | 35.912912        |
+| european  | 452.58029    | 13.396464   | 36.011511      | 43.499229            | 28.442388    | 45.113089   | 35.611606        |
+
+As shown above, there doesn’t seem to be much of a significant difference in any of the data besides two columns: sodium (PDV) and sugar (PDV). This table helped us visualize what factors to pay special attention to later on. 
 
 ## Assessment of Missingness
-To be Added
+Our cleaned dataset doesn’t contain any missing values, so for this portion, we used the merged dataset that we created before cleaning. 
+
+### NMAR Analysis
+There are three columns in the merged dataset that have a lot of missing values: description, review, and rating. We believe that the review column is NMAR because people may not give reviews if they don’t have one to give or if they don’t feel particularly strong about a recipe. In this case, not putting a review would be dependent on the review itself, either on the content of the review or whether or not they have one. 
+
+### Missingness Dependency
+To analyze missingness dependency, we decided to look at the ratings column, and analyze whether it depended on the minutes or n_ingredients column. The significance level we chose for both permutation tests was 0.05 and our test statistic was the absolute difference of means.
+
+#### Permutation Test for ratings and minutes
+**Null Hypothesis**: The distribution of minutes when ratings is missing is the same as the distribution of minutes when ratings is not missing.
+**Alternate Hypothesis**: The distribution of minutes when ratings is missing is not the same as the distribution of minutes when ratings is not missing.
+
+The red line below represents the observed statistic:
+
+The resulting p-value was 0.115, which is greater than 0.05. This means that we fail to reject the null hypothesis and the missingness of ratings does not depend on the minutes column.
+
+#### Permutation Test for ratings and n_ingredients
+**Null Hypothesis**: The distribution of n_ingredients when ratings is missing is the same as the distribution of n_ingredients when ratings is not missing.
+**Alternate Hypothesis**: The distribution of n_ingredients when ratings is missing is not the same as the distribution of n_ingredients when ratings is not missing.
+
+The red line below represents the observed statistic:
+
+The resulting p-value was 0.0, which is less than 0.05. This means that we reject the null hypothesis and the missingness of ratings does depend on the n_ingredients column.
+
+## Hypothesis Testing
+For our hypothesis test, we chose to investigate whether American recipes were healthier than European recipes. As mentioned earlier, we define a healthier recipe to be one that has a lower amount of sugar, carbs, sodium, saturated fat, calories, or total fat. So, we performed permutation tests on each nutritional category. The hypotheses are as follows:
+
+- **Null Hypothesis:** There is a similar amount of sugar/carbs/sodium/etc. for American recipes and European recipes.
+- **Alternate Hypothesis:** The amount of sugar/carbs/sodium/etc. for American recipes is significantly higher than the amount of sugar/carbs/sodium/etc. for European recipes.
+- **Test Statistic:** Difference of means; because our hypothesis test is directional, we aren’t using the absolute difference of means here.
+- **Significance level:** 0.05
+
+After running the permutation tests, these were the results:
+
+| Nutritional Category     | p-value  |
+|--------------------------|----------|
+| calories (#)            | 0.4614   |
+| total_fat (PDV)         | 0.3761   |
+| sugar (PDV)             | 0.0      |
+| sodium (PDV)            | 0.0      |
+| protein (PDV)           | 0.3994   |
+| saturated_fat (PDV)     | 0.1575   |
+| carbs (PDV)             | 0.2214   |
+
+Based on our results, the only two nutritional categories with a p-value of less than 0.05 is sugar (PDV) and sodium (PDV). Sugar and sodium are the only two cases in which we reject our null hypothesis. In other words, there is a significantly higher amount of sugar and sodium in American recipes than there is in European recipes. This suggests that, according to our operationalized definition of healthiness, European recipes are indeed healthier than American ones.
 
 ## Framing a Prediction Problem 🍲
 **Prediction Problem**: How can we use the nutritional facts and ingredient lists to classify whether a recipe would be tagged as European or American? 
