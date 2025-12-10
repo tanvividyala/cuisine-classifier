@@ -2,7 +2,6 @@
 By Tanvi Vidyala and Nithya Nair
 
 ## Introduction
-Introduction (Nithya)
 For our project, we wanted to investigate whether European food is actually healthier than American food by comparing the nutritional information in American recipes to that of European recipes. For the purposes of our study, we define a healthier recipe to be one that has a lower amount of sugar, carbs, sodium, saturated fat, calories, or total fat.
 
 The datasets we use contain information from (food.com)[food.com] and were originally scraped for the paper (Generating Personalized Recipes from Historical User Preferences)[https://cseweb.ucsd.edu/~jmcauley/pdfs/emnlp19c.pdf] by Majumder et al. The recipes dataset has 83,782 rows and 12 columns. Each row represents one recipe. The columns contain the following information:
