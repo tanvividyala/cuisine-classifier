@@ -86,7 +86,7 @@ There are three columns in the merged dataset that have a lot of missing values:
 To analyze missingness dependency, we decided to look at the ratings column, and analyze whether it depended on the minutes or n_ingredients column. The significance level we chose for both permutation tests was 0.05 and our test statistic was the absolute difference of means.
 
 #### Permutation Test for ratings and minutes
-**Null Hypothesis**: The distribution of minutes when ratings is missing is the same as the distribution of minutes when ratings is not missing.
+**Null Hypothesis**: The distribution of minutes when ratings is missing is the same as the distribution of minutes when ratings is not missing. <br>
 **Alternate Hypothesis**: The distribution of minutes when ratings is missing is not the same as the distribution of minutes when ratings is not missing.
 
 The red line below represents the observed statistic:
@@ -94,7 +94,7 @@ The red line below represents the observed statistic:
 The resulting p-value was 0.115, which is greater than 0.05. This means that we fail to reject the null hypothesis and the missingness of ratings does not depend on the minutes column.
 
 #### Permutation Test for ratings and n_ingredients
-**Null Hypothesis**: The distribution of n_ingredients when ratings is missing is the same as the distribution of n_ingredients when ratings is not missing.
+**Null Hypothesis**: The distribution of n_ingredients when ratings is missing is the same as the distribution of n_ingredients when ratings is not missing. <br>
 **Alternate Hypothesis**: The distribution of n_ingredients when ratings is missing is not the same as the distribution of n_ingredients when ratings is not missing.
 
 The red line below represents the observed statistic:
