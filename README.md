@@ -46,7 +46,7 @@ Finally, we dropped columns so that we only kept ones relevant to our question, 
 
 In total, our cleaned dataframe had 17,682 rows and 10 columns. Here are the first 5 rows of our cleaned dataframe:
 
-| idx | name                         | ingredients                                                            | calories (#) | total_fat (PDV) | sugar (PDV) | sodium (PDV) | protein (PDV) | saturated_fat (PDV) | carbs (PDV) | cuisine   |
+| idx | name                         | ingredients                                                            | calories | total_fat | sugar | sodium | protein | saturated_fat | carbs  | label   |
 |-----|------------------------------|-------------------------------------------------------------------------|--------------|------------------|-------------|--------------|----------------|-----------------------|-------------|-----------|
 | 0   | millionaire pound cake       | ['butter', 'sugar', 'eggs', 'all-purpose flour'…]                      | 878.3        | 63.0             | 326.0       | 13.0         | 20.0           | 123.0                | 39.0        | american  |
 | 1   | rter med flsk pea soup with pork | ['dried yellow peas', 'water', 'salt', 'pork'…]                    | 160.4        | 11.0             | 0.0         | 34.0         | 44.0           | 12.0                 | 0.0         | american  |
