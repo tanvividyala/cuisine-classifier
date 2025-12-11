@@ -2,32 +2,32 @@
 By Tanvi Vidyala and Nithya Nair
 
 ## Introduction
-For our project, we wanted to investigate whether European food is actually healthier than American food by comparing the nutritional information in American recipes to that of European recipes. For the purposes of our study, we define a healthier recipe to be one that has a lower amount of sugar, carbs, sodium, saturated fat, calories, or total fat.
+For our project, we wanted to investigate whether European food is actually healthier than American food by comparing the nutritional information in American recipes to that of European recipes and see if we could distinguish a European recipe from an American recipe through a classification model. For the purposes of our study, we define a healthier recipe to be one that has a substantially lower amount of sugar, carbs, sodium, and fat.
 
-The datasets we use contain information from [food.com](food.com) and were originally scraped for the paper [Generating Personalized Recipes from Historical User Preferences](https://cseweb.ucsd.edu/~jmcauley/pdfs/emnlp19c.pdf) by Majumder et al. The recipes dataset has 83,782 rows and 12 columns. Each row represents one recipe. The columns contain the following information:
+The datasets we use contain information from [food.com](food.com) and were originally scraped for the paper [Generating Personalized Recipes from Historical User Preferences](https://cseweb.ucsd.edu/~jmcauley/pdfs/emnlp19c.pdf) by Majumder et al. The recipes dataset has **83,782 rows** and **12 columns**. Each row represents one recipe. The columns contain the following information:
 
 | Column           | Description                                                                                                                                                                       |
 |------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `name`           | Recipe name                                                                                                                                                                       |
-| `id`             | Recipe ID                                                                                                                                                                         |
-| `minutes`        | Minutes to prepare recipe                                                                                                                                                         |
-| `contributor_id` | User ID who submitted this recipe                                                                                                                                                 |
-| `submitted`      | Date recipe was submitted                                                                                                                                                         |
-| `tags`           | Food.com tags for recipe                                                                                                                                                          |
-| `nutrition`      | Nutrition information in the form `[calories (#), total fat (PDV), sugar (PDV), sodium (PDV), protein (PDV), saturated fat (PDV), carbohydrates (PDV)]`; PDV = percentage of daily value |
-| `n_steps`        | Number of steps in recipe                                                                                                                                                         |
-| `steps`          | Text for recipe steps, in order                                                                                                                                                   |
-| `description`    | User-provided description                                                                                                                                                         |
+| `NAME`           | Recipe name                                                                                                                                                                       |
+| `ID`             | Recipe ID                                                                                                                                                                         |
+| `MINUTES`        | Minutes to prepare recipe                                                                                                                                                         |
+| `CONTRIBUTER_ID` | User ID who submitted this recipe                                                                                                                                                 |
+| `SUBMITTED`      | Date recipe was submitted                                                                                                                                                         |
+| `TAGS`           | Food.com tags for recipe                                                                                                                                                          |
+| `NUTRITION`      | Nutrition information in the form `[calories (#), total fat (PDV), sugar (PDV), sodium (PDV), protein (PDV), saturated fat (PDV), carbohydrates (PDV)]`; PDV = percentage of daily value |
+| `N_STEPS`        | Number of steps in recipe                                                                                                                                                         |
+| `STEPS`          | Text for recipe steps, in order                                                                                                                                                   |
+| `DESCRIPTION`    | User-provided description                                                                                                                                                         |
 
 The interactions dataset contains 731,927 rows and 5 columns. Each row represents one review of a recipe. The columns for this dataset include the following information:
 
 | Column     | Description            |
 |-----------|--------------------------|
-| user_id   | User ID                  |
-| recipe_id | Recipe ID                |
-| date      | Date of interaction      |
-| rating    | Rating given             |
-| review    | Review text              |
+| `USER_ID`   | User ID                  |
+| `RECIPE_ID` | Recipe ID                |
+| `DATE`      | Date of interaction      |
+| `RATING`    | Rating given             |
+| `REVIEW`    | Review text              |
 
 ## Data Cleaning and Exploratory Data Analysis
 Before we could begin the data cleaning process, we had to:
