@@ -75,7 +75,7 @@ American recipes share many staples with European ones, but feature stronger rep
 
 ![European Word Cloud](wordcloud_european.png)
 
-European recipes emphasize fresh, whole ingredients such as olive oil, garlic, onion, lemon, and tomatoes. Herbs and aromatics—basil, rosemary, sage, clove—appear frequently, along with cheeses like parmesan and feta, reflecting a fresher, ingredient-forward cooking style.
+European recipes emphasize fresh, whole ingredients such as olive oil, garlic, onion, lemon, and tomatoes. Herbs and aromatics like basil, rosemary, sage, and clove appear frequently, along with cheeses like parmesan and feta, reflecting a fresher, ingredient-forward cooking style.
 
 ### Interesting Aggregates
 For our pivot table, we chose to group by cuisine and analyze the differences in means for our nutritional data.
