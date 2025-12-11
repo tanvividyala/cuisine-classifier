@@ -70,9 +70,11 @@ The IQR of the amount of sugar for American recipes is 53 while the IQR of the a
 We created word clouds to easily visualize the differences in ingredients used in American and European cooking, highlighting similarities in staples and regional differences.
 
 ![American Word Cloud](wordcloud_american.png)
+
 American recipes share many staples with European ones, but feature stronger representation of sugar, powder, sauce, and bolder seasonings like jalapeño, chili, bacon, and cheddar. This suggests a tendency toward richer, more heavily seasoned dishes and greater use of processed flavor additions.
 
 ![European Word Cloud](wordcloud_european.png)
+
 European recipes emphasize fresh, whole ingredients such as olive oil, garlic, onion, lemon, and tomatoes. Herbs and aromatics—basil, rosemary, sage, clove—appear frequently, along with cheeses like parmesan and feta, reflecting a fresher, ingredient-forward cooking style.
 
 ### Interesting Aggregates
