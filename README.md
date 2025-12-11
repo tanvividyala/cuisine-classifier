@@ -69,7 +69,7 @@ The IQR of the amount of sugar for American recipes is 53 while the IQR of the a
 ### Interesting Aggregates
 For our pivot table, we chose to group by cuisine and analyze the differences in means for our nutritional data.
 
-| cuisine   | calories (#) | carbs (PDV) | protein (PDV) | saturated_fat (PDV) | sodium (PDV) | sugar (PDV) | total_fat (PDV) |
+| cuisine   | calories | carbs | protein | saturated_fat | sodium | sugar | total_fat |
 |-----------|--------------|-------------|----------------|-----------------------|--------------|-------------|------------------|
 | american  | 453.33812    | 13.672177   | 36.218693      | 44.671853            | 34.552026    | 69.154943   | 35.912912        |
 | european  | 452.58029    | 13.396464   | 36.011511      | 43.499229            | 28.442388    | 45.113089   | 35.611606        |
@@ -113,13 +113,13 @@ After running the permutation tests, these were the results:
 
 | Nutritional Category     | p-value  |
 |--------------------------|----------|
-| calories (#)            | 0.4614   |
-| total_fat (PDV)         | 0.3761   |
-| sugar (PDV)             | 0.0      |
-| sodium (PDV)            | 0.0      |
-| protein (PDV)           | 0.3994   |
-| saturated_fat (PDV)     | 0.1575   |
-| carbs (PDV)             | 0.2214   |
+| calories            | 0.4614   |
+| total_fat        | 0.3761   |
+| sugar             | 0.0      |
+| sodium            | 0.0      |
+| protein          | 0.3994   |
+| saturated_fat     | 0.1575   |
+| carbs           | 0.2214   |
 
 Based on our results, the only two nutritional categories with a p-value of less than 0.05 is sugar (PDV) and sodium (PDV). Sugar and sodium are the only two cases in which we reject our null hypothesis. In other words, there is a significantly higher amount of sugar and sodium in American recipes than there is in European recipes. This suggests that, according to our operationalized definition of healthiness, European recipes are indeed healthier than American ones.
 
