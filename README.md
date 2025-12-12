@@ -2,7 +2,7 @@
 By Tanvi Vidyala and Nithya Nair
 
 ## Introduction
-For our project, we wanted to investigate whether European food is actually healthier than American food by comparing the nutritional information in American recipes to that of European recipes and see if we could distinguish a European recipe from an American recipe through a classification model. For the purposes of our study, we define a healthier recipe to be one that has a substantially lower amount of sugar, carbs, sodium, and fat.
+Europeans widely claim to lead healthier lifestyles than Americans, starting with their dietary habits. For our project, we wanted to investigate whether European food is truly more nutritious than American food by comparing the nutritional information in American recipes to that of European recipes and see if we could use a classification model to distinguish these two regional cuisines. For the purposes of our study, we define a healthier recipe to be one that has a substantially lower amount of sugar, carbohydrates, sodium, and fat.
 
 The datasets we use contain information from [food.com](food.com) and were originally scraped for the paper [Generating Personalized Recipes from Historical User Preferences](https://cseweb.ucsd.edu/~jmcauley/pdfs/emnlp19c.pdf) by Majumder et al. The recipes dataset has **83,782 rows** and **12 columns**. Each row represents one recipe. The columns contain the following information:
 
