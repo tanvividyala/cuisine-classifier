@@ -186,7 +186,7 @@ The best hyperparameters returned by Grid Search was **`None`** for `max-depth`,
 
 #### Feature Engineering
 
-Then, to help us in feature engineering, we first created a correlation matrix of each of the nutritional features. The analysis revealed several pairs of variables with strong positive correlations, indicating redundancy. In particular, `TOTAL_FAT` and `SATURATED_FAT` were highly correlated, as were `CARBS` and `SUGAR`, and multiple macronutrients showed strong associations with `CALORIES`. These relationships suggested that raw nutrients may encode overlapping information and engineering new features combining them could bring about more meaningful differences in nutritional composition.
+Then, to help us in feature engineering, we first created a correlation matrix of each of the nutritional features. The analysis revealed several pairs of variables with strong positive correlations, indicating redundancy. 
 
 <iframe
   src="assets/correlation-matrix.html"
@@ -195,7 +195,7 @@ Then, to help us in feature engineering, we first created a correlation matrix o
   frameborder="0"
 ></iframe>
 
-These 3 new features were `PROTEIN_DENSITY`, `SUGAR_CARB_RATIO`, and `SAT_FAT_RATIO`. 
+In particular, `TOTAL_FAT` and `SATURATED_FAT` were highly correlated, as were `CARBS` and `SUGAR`, and multiple macronutrients showed strong associations with `CALORIES`. These relationships suggested that raw nutrients may encode overlapping information and engineering new features combining them could bring about more meaningful differences in nutritional composition. The 3 new features we engineered were `PROTEIN_DENSITY`, `SUGAR_CARB_RATIO`, and `SAT_FAT_RATIO`. 
 
 ```
 df['protein_density'] = df['protein'] / (df['calories'] + 1)
