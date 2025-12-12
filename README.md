@@ -32,17 +32,17 @@ The interactions dataset contains 731,927 rows and 5 columns. Each row represent
 ## Data Cleaning and Exploratory Data Analysis
 Before we could begin the data cleaning process, we had to:
 - Merge the recipes and interactions dataset
-- Fill all ratings of 0 with np.nan (ratings of 0 mean that the user likely didn’t rate the recipe; replacing these ratings with np.nan means that the average rating won’t be affected by ratings of 0)
+- Fill all ratings of 0 with `np.nan` (ratings of 0 mean that the user likely didn’t rate the recipe; replacing these ratings with np.nan means that the average rating won’t be affected by ratings of 0)
 - Find the average rating per recipe
 - Add the average rating as a Series back to our merged dataset
 
 Once we followed these steps, we could proceed with our cleaning. First, we dropped the duplicate rows in our dataframe, so that there was only one row per recipe. Since we don’t need any of the ratings information for our research question, we could ignore these values and just keep the first instance of each recipe in our dataframe. 
 
-Next, we split the values in the nutrition column into separate columns: calories (#), total fat (PDV), sugar (PDV), sodium (PDV), protein (PDV), saturated fat (PDV), and carbs (PDV). This made it easier to access certain nutritional information for hypothesis testing.
+Next, we split the values in the nutrition column into separate columns: `CALORIES`, `TOTAL_FAT`, `SUGAR`, `SODIUM`, `PROTEIN`, `SATURATED_FAT`, and `CARBS`. This made it easier to access certain nutritional information for hypothesis testing.
 
-Then, we split the tags column into lists so we could only keep the recipes tagged as American or European. We located these recipes, added a cuisine column marking them as either American or European, and then concatenated these dataframes together.  
+Then, we split the tags column into lists so we could only keep the recipes tagged as American or European. We located these recipes, added a `LABEL` column marking them as either American or European, and then concatenated these dataframes together.  
 
-Finally, we dropped columns so that we only kept ones relevant to our question, which were name, ingredients, calories (#), total_fat (PDV), sugar (PDV), sodium (PDV), protein (PDV), saturated_fat (PDV), carbs (PDV), and cuisine.
+Finally, we dropped columns so that we only kept ones relevant to our question, which were `NAME`, `INGREDIENTS`, `CALORIES`, `TOTAL_FAT`, `SUGAR`, `SODIUM`, `PROTEIN`, `SATURATED_FAT`, `CARBS`, and `LABEL`.
 
 In total, our cleaned dataframe had 17,682 rows and 10 columns. Here are the first 5 rows of our cleaned dataframe:
 
@@ -86,36 +86,36 @@ European recipes emphasize fresh, whole ingredients such as olive oil, garlic, o
 ### Interesting Aggregates
 For our pivot table, we chose to group by cuisine and analyze the differences in means for our nutritional data.
 
-| cuisine   | calories | carbs | protein | saturated_fat | sodium | sugar | total_fat |
+| label   | calories | carbs | protein | saturated_fat | sodium | sugar | total_fat |
 |-----------|--------------|-------------|----------------|-----------------------|--------------|-------------|------------------|
 | american  | 453.33812    | 13.672177   | 36.218693      | 44.671853            | 34.552026    | 69.154943   | 35.912912        |
 | european  | 452.58029    | 13.396464   | 36.011511      | 43.499229            | 28.442388    | 45.113089   | 35.611606        |
 
-As shown above, there doesn’t seem to be much of a significant difference in any of the data besides two columns: sodium (PDV) and sugar (PDV). This table helped us visualize what factors to pay special attention to later on. 
+As shown above, there doesn’t seem to be much of a significant difference in any of the data besides two columns: `SODIUM` and `SUGAR`. This table helped us visualize what factors to pay special attention to later on. 
 
 ## Assessment of Missingness
 Our cleaned dataset doesn’t contain any missing values, so for this portion, we used the merged dataset that we created before cleaning. 
 
 ### NMAR Analysis
-There are three columns in the merged dataset that have a lot of missing values: description, review, and rating. We believe that the review column is NMAR because people may not give reviews if they don’t have one to give or if they don’t feel particularly strong about a recipe. In this case, not putting a review would be dependent on the review itself, either on the content of the review or whether or not they have one. 
+There are three columns in the merged dataset that have a lot of missing values: `DESCRIPTION`, `REVIEW`, and `RATING`. We believe that the `REVIEW` column is NMAR because people may not give reviews if they don’t have one to give or if they don’t feel particularly strong about a recipe. In this case, not putting a review would be dependent on the review itself, either on the content of the review or whether or not they have one. 
 
 ### Missingness Dependency
-To analyze missingness dependency, we decided to look at the ratings column, and analyze whether it depended on the minutes or n_ingredients column. The significance level we chose for both permutation tests was 0.05 and our test statistic was the absolute difference of means.
+To analyze missingness dependency, we decided to look at the ratings column, and analyze whether it depended on the `MINUTES` or `N_INGREDIENTS` column. The significance level we chose for both permutation tests was 0.05 and our test statistic was the absolute difference of means.
 
 #### Permutation Test for ratings and minutes
-**Null Hypothesis**: The distribution of minutes when ratings is missing is the same as the distribution of minutes when ratings is not missing. <br>
-**Alternate Hypothesis**: The distribution of minutes when ratings is missing is not the same as the distribution of minutes when ratings is not missing.
+**Null Hypothesis**: The distribution of `MINUTES` when `RATINGS` is missing is the same as the distribution of `MINUTES` when `RATINGS` is not missing. <br>
+**Alternate Hypothesis**: The distribution of `MINUTES` when `RATINGS` is missing is not the same as the distribution of `MINUTES` when `RATINGS` is not missing.
 
 The red line below represents the observed statistic:
 
 <iframe src="assets/minutes_missing.html" width="800" height="600" frameborder="0"></iframe>
 
 
-The resulting p-value was 0.116, which is greater than 0.05. This means that we fail to reject the null hypothesis and the missingness of ratings does not depend on the minutes column.
+The resulting p-value was 0.116, which is greater than 0.05. This means that we fail to reject the null hypothesis and the missingness of `RATINGS` does not depend on the `MINUTES` column.
 
 #### Permutation Test for ratings and n_ingredients
-**Null Hypothesis**: The distribution of n_ingredients when ratings is missing is the same as the distribution of n_ingredients when ratings is not missing. <br>
-**Alternate Hypothesis**: The distribution of n_ingredients when ratings is missing is not the same as the distribution of n_ingredients when ratings is not missing.
+**Null Hypothesis**: The distribution of `N_INGREDIENTS` when `RATINGS` is missing is the same as the distribution of n_ingredients when ratings is not missing. <br>
+**Alternate Hypothesis**: The distribution of `N_INGREDIENTS` when `RATINGS` is missing is not the same as the distribution of n_ingredients when ratings is not missing.
 
 The red line below represents the observed statistic:
 
@@ -144,7 +144,7 @@ After running the permutation tests, these were the results:
 | saturated_fat     | 0.1575   |
 | carbs           | 0.2214   |
 
-Based on our results, the only two nutritional categories with a p-value of less than 0.05 is sugar (PDV) and sodium (PDV). Sugar and sodium are the only two cases in which we reject our null hypothesis. In other words, there is a significantly higher amount of sugar and sodium in American recipes than there is in European recipes. This suggests that, according to our operationalized definition of healthiness, European recipes are indeed healthier than American ones.
+Based on our results, the only two nutritional categories with a p-value of less than 0.05 is `SUGAR` and `SODIUM`. `SUGAR` and `SODIUM` are the only two cases in which we reject our null hypothesis. In other words, there is a significantly higher amount of sugar and sodium in American recipes than there is in European recipes. This suggests that, according to our operationalized definition of healthiness, European recipes are indeed healthier than American ones.
 
 ## Framing a Prediction Problem 🍲
 **Prediction Problem**: How can we use the nutritional facts and ingredient lists to classify whether a recipe would be tagged as European or American? 
@@ -157,26 +157,36 @@ This problem will be **binary classification** since there are two possible clas
 We used a **Random Forest Classifier** for this problem because it can handle different data types well and is robust to noise while capturing nonlinear patterns in the dataset. <br> 
 
 Our baseline model used all 7 **quantitative** nutritional variables as predictors:
-- `CALORIES`<br>
-- `TOTAL_FAT`<br>
-- `SUGAR`<br>
-- `SODIUM`<br>
-- `PROTEIN`<br>
-- `SATURATED_FAT`<br>
-- `CARBS`<br>
+`CALORIES`<br>
+`TOTAL_FAT`<br>
+`SUGAR`<br>
+`SODIUM`<br>
+`PROTEIN`<br>
+`SATURATED_FAT`<br>
+`CARBS`<br>
 
 As well as one **nominal** text feature containing lists of ingredients for each recipe:<br>
-- `INGREDIENTS`
+`INGREDIENTS`
 
 The `INGREDIENTS` column was turned into a quantitative variable using the built-in `TfidfVectorizer`. We also encoded the `LABELS` target column using `LabelEncoder` to turn categorical labels (American and European) into integers. 
 
-Our model returned a F-1 Score of **0.77** for the American class and an F-1 Score of **0.76** for the European class. The model accuracy was similar at **0.7602**. This indicated somewhat strong, balanced performance across both our categories. Since both two classes are nearly evenly distributed, and that the model performs consistently across them, we believe the model is “good” for a baseline.
+Our model returned a F-1 Score of **0.79** for the American class and an F-1 Score of **0.77** for the European class. The model accuracy was similar at **0.7797**. This indicated somewhat strong, balanced performance across both our categories. Since both two classes are nearly evenly distributed, and that the model performs consistently across them, we believe the model is “good” for a baseline.
 
-## Final Model 🍕
-Firstly, we wanted to assess which combination of our initial 7 quantitative features would result in an optimal accuracy rate. To assess this, we tested all 26 possible combinations of our features to understand which variables held the strongest signal for distinguishing American and European recipes.
+## Final Model
+First, we used a 5-fold Grid Search to find the optimal hyperparameters for our Random Forest Classification model. We assessed various values for `max_depth` and `min_samples_split`.
 
-### Top 10 Feature Combinations
+```python
+hyperparameters = {
+    'max_depth': [4, 8, 12, 16, 20, None],
+    'min_samples_split': [2, 5, 10, 20, 50, 100],
+}
+```
 
+The best hyperparameters returned by Grid Search was **Entropy** for `criterion`, **100** for `max-depth`, and **100** for `min_samples_split`.
+
+Next, we wanted to assess which combination of our initial 7 quantitative features would result in an optimal accuracy rate with the chosen hyperparameters. To assess this, we tested all 26 possible combinations of our features to understand which variables held the strongest signal for distinguishing American and European recipes.
+
+#### Top 10 Feature Combinations
 | Rank | Feature Combination                          | Accuracy     |
 | ---- | -------------------------------------------- | ------------ |
 | 1    | sugar, sodium, protein, saturated_fat, carbs | **0.763701** |
@@ -190,25 +200,14 @@ Firstly, we wanted to assess which combination of our initial 7 quantitative fea
 | 9    | sugar, protein, saturated_fat, carbs         | 0.760397     |
 | 10   | sugar, sodium, protein, saturated_fat        | 0.760397     |
 
+
 Across all subsets, we found that the combination of `SUGAR`, `SODIUM`, `PROTEIN`, `SATURATED_FAT`, and `CARBS` was the most effective combination of unmodified features. This lead us to drop `CALORIES` and `TOTAL_FAT`. `CALORIES` did not meaningfully distinguish the cuisines since it is an aggregate measure, and `TOTAL_FAT` is largely multicollinear with saturated fat, which already captures the more relevant nutritional signal.
-
-Next, we used a 5-fold Grid Search to find the optimal hyperparameters for our Random Forest Classification model. We assessed various values for `max_depth`, `min_samples_split`, and `criterion`. 
-
-```python
-hyperparameters = {
-    'max_depth': [2, 25, 50, 75, 100, 125, 150, 175, 200, None],
-    'min_samples_split': [2, 5, 10, 20, 50, 100, 200],
-    'criterion': ['gini', 'entropy']
-}
-```
-
-The best hyperparameters returned by Grid Search was **Entropy** for `criterion`, **100** for `max-depth`, and **100** for `min_samples_split`.
 
 Lastly, we engineered two new features `PROTEIN_DENSITY` and `FAT_PROTEIN_RATIO` to add to the model. 
 
 `PROTEIN_DENSITY` highlights how much protein a recipe provides relative to its calories, capturing differences in macronutrient balance between cuisines that raw protein alone cannot.
 
-`FAT_PROTEIN_RATIO` measures saturated fat relative to protein, reflecting contrasts in cooking styles (such as dairy-based fats in European dishes versus protein-heavy American recipes) and reveals patterns not visible in either nutrient alone.
+`FAT_PROTEIN_RATIO` measures saturated fat relative to protein, reflecting contrasts in cooking styles—such as dairy-based fats in European dishes versus protein-heavy American recipes—and reveals patterns not visible in either nutrient alone.
 
 In the end, the performance of the final model on the training data achieved a F-1 score of **0.78** for the American class and an F-1 Score of **0.77** for the European class on the test data. This was a slight improvement from the baseline which was 0.77 for the American class and 0.76 for the European class. The overall model accuracy improved as well increasing from 0.762 with the baseline model to **0.773**.
 
