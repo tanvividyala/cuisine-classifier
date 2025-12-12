@@ -191,7 +191,7 @@ Then, to help us in feature engineering, we first created a correlation matrix o
 <iframe
   src="assets/correlation-matrix.html"
   width="1000"
-  height="600"
+  height="1000"
   frameborder="0"
 ></iframe>
 
