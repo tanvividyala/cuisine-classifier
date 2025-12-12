@@ -58,11 +58,15 @@ In total, our cleaned dataframe had 17,682 rows and 10 columns. Here are the fir
 ### Univariate Analysis
 We performed an univariate analysis on the number of calories.
 
+<iframe src="assets/calorie_fig.html" width="800" height="600" frameborder="0"></iframe>
+
 The histogram shows a right skewed pattern, with a peak at the 175-222.9 calorie mark. As the calorie amount increases, the percentage of recipes tends to decrease, suggesting that there aren’t as many American and European recipes with more than 1,000, or even 500, calories.
 
 ### Bivariate Analysis
 
 For our bivariate analysis, we looked at the amount of sugar in American recipes vs. European recipes.
+
+<iframe src="assets/sugar_box.html" width="800" height="600" frameborder="0"></iframe>
 
 The IQR of the amount of sugar for American recipes is 53 while the IQR of the amount of sugar for European recipes is 32. This suggests that there is greater variation in the amount of sugar of American recipes compared to European recipes.
 
@@ -102,13 +106,17 @@ To analyze missingness dependency, we decided to look at the ratings column, and
 
 The red line below represents the observed statistic:
 
-The resulting p-value was 0.115, which is greater than 0.05. This means that we fail to reject the null hypothesis and the missingness of ratings does not depend on the minutes column.
+<iframe src="assets/minutes_missing.html" width="800" height="600" frameborder="0"></iframe>
+
+The resulting p-value was 0.116, which is greater than 0.05. This means that we fail to reject the null hypothesis and the missingness of ratings does not depend on the minutes column.
 
 #### Permutation Test for ratings and n_ingredients
 **Null Hypothesis**: The distribution of n_ingredients when ratings is missing is the same as the distribution of n_ingredients when ratings is not missing. <br>
 **Alternate Hypothesis**: The distribution of n_ingredients when ratings is missing is not the same as the distribution of n_ingredients when ratings is not missing.
 
 The red line below represents the observed statistic:
+
+<iframe src="assets/n_ingredients_missing.html" width="800" height="600" frameborder="0"></iframe>
 
 The resulting p-value was 0.0, which is less than 0.05. This means that we reject the null hypothesis and the missingness of ratings does depend on the n_ingredients column.
 
