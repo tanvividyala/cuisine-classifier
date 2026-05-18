@@ -234,3 +234,29 @@ iframe {
 .main-content {
   padding-top: 3rem;
 }
+
+/* ── Eyebrow label above the h1 ─────────────────────────────────────────── */
+
+.main-content h1:first-of-type::before {
+  content: "— Classifying American and European Recipes by Nutritional Data";
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  font-weight: 400;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.6rem;
+}
+
+/* ── Byline paragraph immediately after h1 ──────────────────────────────── */
+
+.main-content h1:first-of-type + p {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.03em;
+  color: var(--fg-subtle);
+  margin-top: 0.5rem;
+  margin-bottom: 2.5rem;
+  max-width: none;
+}
